@@ -1,0 +1,570 @@
+.slider {
+    width: 100%;
+    height: 100vh;
+  }
+
+  html, body, #root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  
+  .slider .items-group {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .slider .items-group .item {
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    transition: 0.5s;
+    visibility: hidden;
+    position: absolute;
+    padding: 50px 20px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  
+  .slider .items-group .item:hover .bg {
+    opacity: 0.2;
+  }
+  
+  .slider .items-group .item:hover .block {
+    box-shadow: 0px 0px 50px #333;
+  }
+  
+  .slider .items-group .item.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .slider .items-group .item .bg {
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+    position: absolute;
+    transform: scale(1.03);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+  .slider .items-group .item .blur {
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+    filter: blur(5px);
+    position: absolute;
+    transform: scale(1.03);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+  .slider .items-group .item .block {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    color: #ffffff;
+    transition: box-shadow 0.5s;
+    max-width: 40rem;
+    overflow: hidden;
+    max-height: 40rem;
+    border-radius: 10px;
+    transform: scale(1.03);
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    box-shadow: none;
+    position: relative;
+  }
+
+  
+  
+  .slider .items-group .item .block .circleLight {
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: 0.5s;
+    position: absolute;
+    border-radius: 10px;
+    background: radial-gradient(circle at 80px 40px, #fff, transparent);
+  }
+  
+  .slider .items-group .item .block .text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+  .slider .items-group .item .block .text h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 130px;
+    margin-bottom: 0px;
+  }
+  
+  .slider .items-group .item .block .text p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+  }
+
+  input, button {
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    outline: none;
+    
+  }
+
+  .error {
+    color: #ff4d4d;
+    font-weight: 600;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+    backdrop-filter: blur(3px);
+  }
+
+  .block .text {
+    animation: fadeInUp 0.6s ease-in-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  button {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  button::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ff6600;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: -1;
+  }
+
+  form {
+    display: flex
+;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-self: center;
+    text-align-last: center;
+}
+  
+  button:hover::before {
+    transform: scaleX(1);
+  }
+
+  button {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  button::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: #189fff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: -1;
+  }
+  
+  button:hover::before {
+    transform: scaleX(1);
+  }
+  .login-title {
+    color: #ccc;
+    font-size: 3rem;
+    margin-bottom: 46px;
+    text-align: center;
+    font-weight: 5px;
+    letter-spacing: 1px;
+  }
+
+  .signup-text {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #ff0000;
+    text-align: center;
+  }
+  
+  .signup-text a {
+    color: #00bcd4;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .signup-text a:hover {
+    color: #00e5ff;
+  }
+  
+  
+  
+  
+  
+  input:focus, button:focus {
+    border-color: #ff6600;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  input, button {
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    outline: none;
+  }
+  
+  input:focus, button:focus {
+    border-color: #ff6600;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+    
+
+  /* Stiluri pentru card */
+.slider .items-group .item .block {
+    width: 100%;
+    height: 100%;
+    padding: 30px; /* Ajustăm padding-ul pentru o mai bună distribuire a spațiului */
+    color: #ffffff;
+    transition: box-shadow 0.5s;
+    max-width: 40rem; /* Maximizăm dimensiunea pentru desktop */
+    max-height: 45rem;
+    border-radius: 15px; /* Colțuri mai rotunjite */
+    transform: scale(1.03);
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6); /* Adăugăm o umbră subtilă */
+    position: relative;
+  }
+  
+  /* Stiluri pentru textul din card */
+  .slider .items-group .item .block .text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundal ușor transparent pentru a îmbunătăți contrastul */
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .slider .items-group .item .block .text h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 120px; /* Ajustăm dimensiunea fontului */
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Adăugăm umbră textului pentru mai mult contrast */
+  }
+  
+  .slider .items-group .item .block .text p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px; /* Mărim puțin textul pentru a fi mai ușor de citit */
+    font-weight: 400;
+    color: #f0f0f0; /* Culoare mai deschisă pentru textul paragrafului */
+    line-height: 1.5;
+    margin-top: 30px;
+  }
+  
+  /* Stiluri pentru input și butoane */
+  input, button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #ffffff; /* Adăugăm o margine albă */
+    background-color: rgba(255, 255, 255, 0.3); /* Fundal semitransparent pentru input-uri */
+    color: #ffffff;
+    transition: background-color 0.3s, border-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0;
+  }
+  
+  /* Hover pentru input și butoane */
+  input:hover, button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-color: #ff6600; /* Schimbăm culoarea bordurii la hover */
+  }
+  
+  /* Media query pentru telefoane */
+  @media (max-width: 768px) {
+    .slider .items-group .item .block {
+      max-width: 90%; /* Ajustăm dimensiunea pe mobil */
+      max-height: 80%;
+      padding: 15px;
+    }
+  
+    .slider .items-group .item .block .text h2 {
+      font-size: 80px; /* Mărim mai mică pe mobil */
+    }
+  
+    .slider .items-group .item .block .text p {
+      font-size: 3px; /* Mărim mai mică pe mobil */
+    }
+  
+    input, button {
+      font-size: 13px; /* Mărim mai mică pentru mobile */
+    }
+  }
+
+  
+  
+  /* Media query pentru tablete */
+  @media (max-width: 1024px) {
+    .slider .items-group .item .block {
+      max-width: 80%; /* Ajustăm pentru tablete */
+      max-height: 90%;
+    }
+  
+    .slider .items-group .item .block .text h2 {
+      font-size: 100px;
+    }
+  
+    .slider .items-group .item .block .text p {
+      font-size: 16px;
+    }
+  }
+  
+  
+  .slider, .item {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .slider .items-group .item .block:hover {
+    box-shadow: 0px 0px 70px #111;
+  }
+
+
+  
+  .slider {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .items-group {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .item {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    transition: 0.5s;
+    visibility: hidden;
+    position: relative;
+    padding: 50px 20px;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  
+  .block {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    color: #ffffff;
+    transition: box-shadow 0.5s;
+    max-width: clamp(250px, 25vw, 400px); /* Dimensiune fluidă */
+    max-height: clamp(350px, 40vh, 550px); /* Dimensiune fluidă */
+    border-radius: 10px;
+    transform: scale(1.03);
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    box-shadow: none;
+  
+    .circleLight {
+      top: 0;
+      left: 0;
+      opacity: 0;
+      content: '';
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: 0.5s;
+      position: absolute;
+      border-radius: 10px;
+      background: radial-gradient(circle at 80px 40px, #3a3a3a, transparent);
+    }
+  
+    .text {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+      background-position: center;
+      background-attachment: fixed;
+    }
+  
+    h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 130px;
+      margin-bottom: 0px;
+    }
+  
+    p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 15px;
+    }
+  
+    &:hover {
+      box-shadow: 0px 0px 70px #111;
+  
+      .circleLight {
+        opacity: 0.4;
+      }
+    }
+  }
+  
+  /* Media query pentru telefoane */
+  @media (max-width: 768px) {
+    .block {
+      max-width: 250px;
+      max-height: 350px;
+      padding: 15px;
+    }
+  
+    h2 {
+      font-size: 70px; /* Mărime mai mică pe mobil */
+    }
+  
+    p {
+      font-size: 12px;
+    }
+  }
+  
+  /* Media query pentru tablete și dispozitive cu ecrane medii */
+  @media (max-width: 1024px) {
+    .block {
+      max-width: 300px;
+      max-height: 450px;
+    }
+  
+    h2 {
+      font-size: 100px;
+    }
+  
+    p {
+      font-size: 14px;
+    }
+  }
+  
+  
+  .slider .items-group .item .block:hover .circleLight {
+    opacity: 0.4;
+  }
+  
+  .slider .navigations {
+    bottom: 0px;
+    width: 100%;
+    position: absolute;
+  }
+  
+  .slider .navigations .dots {
+    height: 20px;
+    padding: 10px 0px;
+    text-align: center;
+  }
+  
+  .slider .navigations .dots li {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .slider .navigations .dots li + li {
+    margin-left: 10px;
+  }
+  
+  .slider .navigations .dots li:hover {
+    filter: blur(2px);
+  }
+  
+  .slider .navigations .dots li.active {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .slider .navigations .dots li.active:hover {
+    filter: blur(0px);
+  }
+  

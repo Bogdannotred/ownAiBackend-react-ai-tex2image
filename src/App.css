@@ -1,0 +1,321 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 80px;
+  background-color: #1e1e1e;
+  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; 
+  border-bottom: 2px solid #505050;
+}
+
+.dropdown-menu {
+  background: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+  left: 5px;
+  align-items: center;
+  padding: 0px 20px 0 20px;
+  box-shadow: 12px 13px 13px 4px rgb(142 137 137 / 10%);
+  border-radius: 0 0 30px 30px;
+  border-bottom: 10px solid #444;
+}
+
+.dropdown-menu h1 {
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+  border-bottom: 3px solid #444;
+  color: white;
+  cursor: pointer;
+}
+
+
+.logo, .nume, .Dreapta-Header {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  justify-content: flex-start;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nume {
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: absolute;
+  position-area: center;
+}
+
+.Dreapta-Header {
+  justify-content: flex-end;
+  gap: 1.5rem;
+  position: absolute;
+  width: 300px;
+  right: 16px;
+}
+
+.Dreapta-Header h1 {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .Dreapta-Header {
+    display: none;
+  }
+  .profile-dropdownheder
+  {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background: #1e1e1e;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+      /* Underlying values */
+  opacity: 1;
+  transform: translateY(0);
+  animation: fade-in 0.25s ease-in;
+  
+  /* Replace is the default value */
+  /* for animation-composition
+  animation-composition: replace; */
+}
+
+
+    
+@keyframes fade-in {
+  0% {
+    /* Effect values */
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+
+  .mobile-menu h1 {
+    font-size: 1.2rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.dropdown-menu {
+  background: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+}
+.textsec2 {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem 0;
+}
+
+
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.innercontent {
+  width: 100%;
+  max-width: 1042px;
+}
+
+.divPatrat {
+  width: 100%;
+  max-width: 400px;
+}
+.hidden {
+  transform: translateY(-80%); 
+}
+.header, .header.hidden {
+  transition: transform 0.3s ease-in-out;
+
+
+}
+
+
+
+.innercontent {
+  width: 1042px;
+  display: grid;
+  justify-content: start;
+}
+
+.container {
+  padding: 20px;
+  height: 200vh; /* Înălțime mare pentru a simula scroll-ul */
+}
+
+/* Prima secțiune (albastru) */
+.section-one {
+  background-color: #0051ff; /* sau orice nuanță de albastru vrei */
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.block {
+  position: relative;
+  z-index: 1; /* Asigură-te că zona activă este deasupra altor elemente */
+}
+
+.text {
+  position: relative;
+  z-index: 2; /* Asigură-te că textul și butoanele sunt accesibile */
+}
+
+.signup-text span {
+  cursor: pointer;
+  z-index: 3; /* Asigură-te că link-urile de schimbare a textului sunt deasupra animației */
+}
+
+.circleLight {
+  pointer-events: none; /* Previne ca lumina animată să blocheze interacțiunea cu alte elemente */
+}
+
+
+
+
+.content {
+  width: 100vw;
+}
+
+
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.section-one.parallax-section {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent; 
+}
+
+.parallax-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-image: url('./assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  will-change: transform;
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.parallax-content .paragraf {
+  width: 50vw;
+}
+
+.parallax-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+
+.section-two {
+  background: #2a2f2b;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Formulare */
+.text2img-form,
+.blacktocolor-form {
+  background-color: #404247;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: #4a4a4a 5px 5px 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+
+
+  .Dreapta-Header {
+    display: none;
+  }
+  .nume {
+    padding-left: 4vw;
+    font-size: 1rem;
+  }
+
+  .section-two {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .paragraf {
+    width: 90vw;
+  }
+
+  .text2img-form,
+  .blacktocolor-form {
+    width: 95%;
+  }
+}
