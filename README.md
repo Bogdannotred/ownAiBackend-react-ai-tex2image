@@ -1,61 +1,130 @@
-[Download demo video](./demo.mp4)
-## Demo Video
 
-[![Watch the video](https://img.youtube.com/vi/ID_VIDEO/maxresdefault.jpg)(https://youtu.be/6g4HcdH5mWQ)
+# 🧠 Text-to-Image AI Generator with Firebase
 
+This project is a **React + Firebase** application that allows users to generate images from text prompts using an external AI model (e.g., DeepAI, Replicate, or Stability AI). Generated images are stored in Firebase Storage and can be viewed later via Firestore history.
 
-# React + TypeScript + Vite
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📸 Demo
 
-Currently, two official plugins are available:
+Watch a live demo: [YouTube Demo](https://youtu.be/6g4HcdH5mWQ)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🔤 Text-to-image generation using AI API (DeepAI / Stable Diffusion)
+- ☁️ Firebase Functions handle backend logic
+- 🗂 Generated images are stored in Firebase Storage
+- 🕓 User prompt history saved in Firestore
+- 🔐 Optional: Firebase Authentication for personalized access
+- 🌐 Responsive UI built with React + TypeScript + Vite
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
+---
+
+## 🛠 Tech Stack
+
+| Layer     | Technology                 |
+|-----------|----------------------------|
+| Frontend  | React, TypeScript, Vite    |
+| Backend   | Firebase Functions (Node.js) |
+| Storage   | Firebase Storage           |
+| Database  | Firestore                  |
+| AI Model  | DeepAI / Stability AI / Replicate |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+cd YOUR_REPO_NAME
+```
+
+### 2. Install Frontend Dependencies
+
+```bash
+npm install
+```
+
+### 3. Set Up Firebase
+
+- Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com)
+- Enable:
+  - Firebase Functions
+  - Firestore
+  - Storage
+  - (Optional) Authentication
+- Install Firebase CLI if needed:
+  ```bash
+  npm install -g firebase-tools
+  ```
+
+### 4. Deploy Cloud Function
+
+Inside the `functions/` folder:
+
+```bash
+cd functions
+npm install
+firebase deploy --only functions
+```
+
+> Make sure to add your AI API key in a secure way (e.g., using Firebase config or environment variables).
+
+---
+
+## 🧪 Run Locally
+
+```bash
+npm run dev
+```
+
+Then open [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 🔐 Firebase Function Example
+
+```ts
+export const generateImage = functions.https.onCall(async (data, context) => {
+  const prompt = data.prompt;
+  const response = await fetch('https://api.deepai.org/api/text2img', {
+    method: 'POST',
+    headers: {
+      'Api-Key': 'YOUR_DEEPAI_API_KEY',
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
-  },
-})
+    body: `text=${encodeURIComponent(prompt)}`
+  });
+
+  const result = await response.json();
+  const imageUrl = result.output_url;
+
+  await admin.firestore().collection('images').add({
+    prompt,
+    imageUrl,
+    createdAt: admin.firestore.FieldValue.serverTimestamp(),
+  });
+
+  return { imageUrl };
+});
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ✅ TODO / Improvements
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
-# ownAI-react-ai-tex2image
+- [ ] Add Firebase Authentication for users
+- [ ] Paginate image history
+- [ ] Allow image download/share
+- [ ] Add model selection (Stable Diffusion, DALL·E, etc.)
+- [ ] Add environment variable support for API keys
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License – see the [LICENSE](./LICENSE) file for details.
