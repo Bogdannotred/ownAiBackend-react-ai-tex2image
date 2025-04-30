@@ -48,7 +48,7 @@ function HomePage() {
         </div>
 
         <div className="section-two">
-            <form className="text2img-form" onSubmit={(e) => generateImg(e , Promth , api_key)}>
+            <form className="text2img-form" onSubmit={(e) => generateImg(e , Promth)}>
                 <h2 className="textsec2">Text to Image</h2>
                 <input
                 style={{

@@ -6,28 +6,30 @@ function Image(){
     const [Img , setImg] = useState("");
     const [colorizedImage , setColorizedImage] = useState("");
 
- const generateImg = async (e: React.FormEvent , Promth : string , api_key : string) => {
-    e.preventDefault();
+    const generateImg = async (e: React.FormEvent, prompt: string) => {
+      e.preventDefault();
+    
+      try {
+        const formData = new FormData();
+        formData.append("prompt", prompt);
+    
+        const response = await fetch("http://localhost:8000/generate", {
+          method: "POST",
+          body: formData, // 🔹 trimitem ca form, NU JSON
+        });
+    
+        const data = await response.json();
+        console.log(data);
+    
+        // Exemplu: http://localhost:8000/images/abc123.png
+        setImg(data.image_url);
+      } catch (error) {
+        console.error("Eroare la generare imagine:", error);
+      }
+    };
+    
 
-    try {
-      const response = await fetch("https://api.deepai.org/api/text2img", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "api-key": api_key
-        },
-        body: JSON.stringify({
-          text: Promth,
-        }),
-      });
-      const data = await response.json();
-      setImg(data.output_url);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleColorizer = async (e: React.FormEvent , api_key:string ,file :File) => {
+  const handleColorizer = async (e: React.FormEvent ,file :File) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image" , file);
@@ -35,7 +37,6 @@ function Image(){
       const response = await fetch("https://api.deepai.org/api/colorizer", {
         method: "POST",
         headers: {
-          "api-key": api_key,
         },
         body: formData,
       });
