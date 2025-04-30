@@ -5,9 +5,11 @@ function Image(){
 
     const [Img , setImg] = useState("");
     const [colorizedImage , setColorizedImage] = useState("");
+    const [loading , setLoading] = useState(false);
 
     const generateImg = async (e: React.FormEvent, prompt: string) => {
       e.preventDefault();
+      setLoading(true)
     
       try {
         const formData = new FormData();
@@ -23,6 +25,7 @@ function Image(){
     
         // Exemplu: http://localhost:8000/images/abc123.png
         setImg(data.image_url);
+        setLoading(false)
       } catch (error) {
         console.error("Eroare la generare imagine:", error);
       }
@@ -66,7 +69,7 @@ function Image(){
       }
     }
 
-  return {Img , colorizedImage, generateImg , handleColorizer, downloadImgLogic};
+  return {Img , colorizedImage,loading, generateImg , handleColorizer, downloadImgLogic};
 
   
 }

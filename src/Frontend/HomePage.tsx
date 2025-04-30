@@ -9,7 +9,7 @@ function HomePage() {
   const [Promth, setPromth] = useState("");
 
  // const [Img , colorizedImage, generateImg ,  handleColorizer] = Image();
-  const { Img, colorizedImage, generateImg, handleColorizer , downloadImgLogic} = Image(); // dc asa
+  const { Img, colorizedImage,loading ,  generateImg, handleColorizer , downloadImgLogic} = Image(); // dc asa
 
   const api_key = import.meta.env.VITE_DEEPAI_API_KEY;
   
@@ -62,6 +62,7 @@ function HomePage() {
                 value={Promth}
                 onChange={(e) => setPromth(e.target.value)}
                 />
+                  {loading && <p>Loading image...</p>}
                 {Img && <img src={Img} alt="Generated result" />}
                 {Img && (
                 <button type="button" onClick={() => downloadImgLogic(Img, "Generated_Img")}>
