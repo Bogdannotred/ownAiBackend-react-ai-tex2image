@@ -43,6 +43,10 @@ git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 cd YOUR_REPO_NAME
 ```
 
+```if you want run backend ai
+-- python -m ai:app --reload     / you must be in src / backend
+```
+
 ### 2. Install Frontend Dependencies
 
 ```bash
