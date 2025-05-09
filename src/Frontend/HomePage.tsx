@@ -74,8 +74,8 @@ function HomePage() {
             <form className="blacktocolor-form" onSubmit = {(e) => {
               e.preventDefault();
 
-              const fileInput = e.currentTarget.querySelector('input[type="file"]') as HTMLInputElement; // ce este input[type]
-              const file = fileInput?.files?.[0] // ce sunt semnele intrebarii
+              const fileInput = e.currentTarget.querySelector('input[type="file"]') as HTMLInputElement; 
+              const file = fileInput?.files?.[0] 
               if(file)
               {
                 handleColorizer(e , api_key , file)
